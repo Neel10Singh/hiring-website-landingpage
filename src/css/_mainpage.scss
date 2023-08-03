@@ -1,0 +1,511 @@
+@mixin flexbox($dir, $rg, $cg) {
+  display: flex;
+  flex-direction: $dir;
+  row-gap: $rg;
+  column-gap: $cg;
+}
+@mixin dimensions($width, $height) {
+  height: $height;
+  width: $width;
+}
+$brown: #641e16;
+$vlbrown: #943126;
+.mainpage {
+  @include flexbox(column, 5rem, 3rem);
+  position: relative;
+  align-items: center;
+}
+.facediv {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  @include dimensions(80%, 60rem);
+  @include flexbox(column, 2rem, 1rem);
+  background-color: $brown;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  color: white;
+  h1 {
+    width: 80%;
+    z-index: 5;
+  }
+  p {
+    width: 80%;
+    text-align: justify;
+    z-index: 5;
+  }
+  .jobanim {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 4;
+    opacity: 0.4;
+  }
+  .getstarted {
+    @include dimensions(80%, 8rem);
+    border-radius: 4rem;
+    border: none;
+    color: white;
+    font-size: 3rem;
+    border: 2px solid $vlbrown;
+    background-color: transparent;
+    transition: 0.2s;
+    z-index: 5;
+    background-color: #641e169a;
+    &:hover {
+      background-color: $vlbrown;
+    }
+  }
+  .faceline1,
+  .faceline3 {
+    position: absolute;
+
+    z-index: 5;
+  }
+
+  .faceline3,
+  .faceline1 {
+    border-left: 2px solid $vlbrown;
+    height: 80%;
+    top: 0;
+  }
+  .faceline1 {
+    right: 4.5rem;
+  }
+
+  .faceline3 {
+    right: 5rem;
+  }
+}
+.subface {
+  position: absolute;
+  top: 5rem;
+  right: 5rem;
+  @include dimensions(80%, 60rem);
+  background-color: $vlbrown;
+  opacity: 0.9;
+  z-index: 2;
+}
+.toppage {
+  height: 70rem;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
+}
+.companies {
+  // margin-top: 70rem;
+  width: 80%;
+  background-color: white;
+  h3 {
+    text-align: center;
+    color: rgb(49, 49, 49);
+  }
+  z-index: 2;
+}
+.companyscroll {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  margin-top: 2rem;
+  height: 15rem;
+  section {
+    display: flex;
+    animation: swipe 30s linear infinite reverse;
+  }
+}
+.companyscroll2 {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  height: 15rem;
+  section {
+    display: flex;
+    animation: swipe 30s linear infinite;
+  }
+}
+
+img {
+  width: 15rem;
+  height: 15rem;
+  margin: 0 1.5rem;
+  object-fit: contain;
+  padding-left: 0;
+}
+
+@keyframes swipe {
+  0% {
+    transform: translate(0);
+  }
+
+  100% {
+    transform: translate(-100%);
+  }
+}
+@keyframes swipe2 {
+  0% {
+    transform: translate(0);
+  }
+
+  100% {
+    transform: translate(100%);
+  }
+}
+
+.features {
+  background-color: black;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  padding: 4rem 0;
+  .backanim {
+    position: fixed;
+    @include dimensions(100%, 100%);
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+  }
+  .neonanim {
+    width: 100%;
+    position: absolute;
+    top: -38rem;
+    left: 0;
+    height: 100rem;
+    object-fit: cover;
+  }
+  .featuresline1 {
+    position: absolute;
+    top: 27rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 54rem;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-radius: 2px;
+  }
+  .featuresline2 {
+    position: absolute;
+    top: 98rem;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 54rem;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+    border-radius: 2px;
+  }
+  h3 {
+    color: white;
+    text-align: center;
+    text-shadow: 0px 5px 15px white;
+    z-index: 2;
+  }
+  p {
+    color: white;
+    margin-bottom: 5rem;
+    margin-top: 10rem;
+    margin-left: 5rem;
+    text-shadow: 0px 5px 15px white;
+    z-index: 2;
+  }
+  .row1,
+  .row2 {
+    @include flexbox(column, 2rem, 2rem);
+    width: 100%;
+
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 10rem;
+    z-index: 2;
+    .er {
+      @include flexbox(row, auto, 2.3rem);
+      justify-content: center;
+      width: 100%;
+      align-items: center;
+    }
+  }
+  .featureboxhidden {
+    transform: translateY(50%);
+    opacity: 0;
+    transition: 0.5s;
+    img {
+      @include dimensions(25%, 100%);
+      object-fit: cover;
+      margin: 0;
+    }
+    h3 {
+      display: flex;
+      justify-content: center;
+      font-weight: 500;
+      color: white;
+      text-shadow: none;
+      font-size: 2rem;
+      align-items: center;
+      @include dimensions(74%, 100%);
+      text-align: center;
+      padding: 1rem;
+    }
+  }
+
+  .featurebox:nth-child(2) {
+    transition-delay: 100ms;
+  }
+  .featurebox:nth-child(3) {
+    transition-delay: 200ms;
+  }
+  .featurebox:nth-child(4) {
+    transition-delay: 300ms;
+  }
+  .featurebox:nth-child(5) {
+    transition-delay: 400ms;
+  }
+  .featurebox:nth-child(6) {
+    transition-delay: 500ms;
+  }
+  .featurebox:nth-child(7) {
+    transition-delay: 600ms;
+  }
+  .featurebox:nth-child(8) {
+    transition-delay: 700ms;
+  }
+  .dot {
+    height: 1rem;
+    width: 1rem;
+    border-radius: 1rem;
+  }
+  .featurebox {
+    @include dimensions(30%, 12rem);
+    @include flexbox(row, 1rem, 1rem);
+
+    position: relative;
+    background-color: transparent;
+    overflow: hidden;
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.5s;
+    img {
+      @include dimensions(25%, 100%);
+      object-fit: cover;
+      margin: 0;
+    }
+    h3 {
+      display: flex;
+      justify-content: center;
+      font-weight: 500;
+      color: white;
+      text-shadow: none;
+      font-size: 2rem;
+      align-items: center;
+      @include dimensions(74%, 100%);
+      text-align: center;
+      padding: 1rem;
+    }
+  }
+  .b1 {
+    background-color: purple;
+    box-shadow: -4px 0px 5px purple, 4px 0px 5px purple, 0px -4px 5px purple,
+      0px 4px 5px purple;
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+  @keyframes dotscale {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(2);
+    }
+  }
+  .b2 {
+    background-color: rgb(5, 130, 226);
+    box-shadow: -4px 0px 5px rgb(5, 130, 226), 4px 0px 5px rgb(5, 130, 226),
+      0px -4px 5px rgb(5, 130, 226), 0px 4px 5px rgb(5, 130, 226);
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+  .b3 {
+    background-color: purple;
+    box-shadow: -4px 0px 5px purple, 4px 0px 5px purple, 0px -4px 5px purple,
+      0px 4px 5px purple;
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+  .b4 {
+    background-color: rgb(0, 255, 183);
+    box-shadow: -4px 0px 5px rgb(0, 255, 183), 4px 0px 5px rgb(0, 255, 183),
+      0px -4px 5px rgb(0, 255, 183), 0px 4px 5px rgb(0, 255, 183);
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+  .b5 {
+    background-color: rgb(0, 162, 255);
+    box-shadow: -4px 0px 5px rgb(0, 162, 255), 4px 0px 5px rgb(0, 162, 255),
+      0px -4px 5px rgb(0, 162, 255), 0px 4px 5px rgb(0, 162, 255);
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+  .b6 {
+    background-color: rgb(242, 0, 255);
+    box-shadow: -4px 0px 5px rgb(242, 0, 255), 4px 0px 5px rgb(242, 0, 255),
+      0px -4px 5px rgb(242, 0, 255), 0px 4px 5px rgb(242, 0, 255);
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+  .b7 {
+    background-color: rgb(0, 255, 30);
+    box-shadow: -4px 0px 5px rgb(0, 255, 30), 4px 0px 5px rgb(0, 255, 30),
+      0px -4px 5px rgb(0, 255, 30), 0px 4px 5px rgb(0, 255, 30);
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+  .b8 {
+    background-color: rgb(255, 234, 0);
+    box-shadow: -4px 0px 5px rgb(255, 234, 0), 4px 0px 5px rgb(255, 234, 0),
+      0px -4px 5px rgb(255, 234, 0), 0px 4px 5px rgb(255, 234, 0);
+    animation: dotscale 2s linear infinite alternate-reverse;
+  }
+}
+
+.contact {
+  @include dimensions(100%, 50rem);
+  background-color: white;
+  z-index: 1;
+  .bottomface {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    padding: 3rem;
+    @include dimensions(80%, 40rem);
+    @include flexbox(row, 2rem, 1rem);
+    background-color: $brown;
+    justify-content: space-evenly;
+    align-items: start;
+    text-align: start;
+    color: white;
+    .bottomline1,
+    .bottomline3 {
+      border-left: 2px solid $vlbrown;
+      height: 80%;
+      bottom: 0;
+      z-index: 4;
+      position: absolute;
+    }
+    .bottomline1 {
+      left: 4.5rem;
+    }
+    .bottomline3 {
+      left: 5rem;
+    }
+    .logo {
+      z-index: 5;
+      height: 50%;
+      object-fit: cover;
+    }
+    .footerbox {
+      @include flexbox(column, 0.3rem, 0.5rem);
+      @include dimensions(fit-content, fit-content);
+      margin-bottom: 2rem;
+      z-index: 5;
+      .topic {
+        font-size: 1.5rem;
+      }
+      .content {
+        text-decoration: none;
+        color: white;
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .bottomsubface {
+    position: absolute;
+    bottom: 5rem;
+    left: 5rem;
+    @include dimensions(80%, 40rem);
+    @include flexbox(row, 1rem, 1rem);
+    background-color: $vlbrown;
+    opacity: 0.9;
+    z-index: 2;
+  }
+}
+.mailing {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 5;
+  @include flexbox(column, 0.5rem, 0);
+  span {
+    color: rgb(150, 150, 150);
+  }
+  .mailbut {
+    @include dimensions(3rem, 3rem);
+    border-radius: 1.5rem;
+    background-color: transparent;
+    border: 2px solid $vlbrown;
+    color: white;
+    margin-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.5rem;
+    transition: 0.2s;
+    &:hover {
+      background-color: $vlbrown;
+    }
+  }
+}
+@media (min-width: 500px) and (max-width: 800px) {
+  .features .featurebox,
+  .featureboxhidden {
+    @include dimensions(30%, 8rem);
+  }
+  .features {
+    .featuresline1 {
+      height: 38rem;
+      top: 25rem;
+    }
+    .featuresline2 {
+      top: 80rem;
+      height: 38rem;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .faceline1,
+  .faceline3 {
+    display: none;
+  }
+  .features .featurebox,
+  .featureboxhidden {
+    @include dimensions(30%, 6rem);
+    h3 {
+      font-size: 1rem;
+    }
+  }
+  .features {
+    .featuresline1 {
+      height: 30rem;
+      top: 24rem;
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+    }
+    .featuresline2 {
+      top: 72rem;
+      height: 30rem;
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+    }
+  }
+  .features .neonanim {
+    top: -41rem;
+  }
+  .companies {
+    width: 100%;
+  }
+  .contact .bottomface {
+    .logo,
+    .bottomline1,
+    .bottomline3 {
+      display: none;
+    }
+    .footerbox {
+      row-gap: 0.7rem;
+      .content {
+        font-size: 1rem;
+      }
+    }
+  }
+}

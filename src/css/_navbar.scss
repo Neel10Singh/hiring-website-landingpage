@@ -1,0 +1,136 @@
+@mixin flexbox($dir, $rg, $cg) {
+  display: flex;
+  flex-direction: $dir;
+  row-gap: $rg;
+  column-gap: $cg;
+}
+@mixin dimensions($width, $height) {
+  height: $height;
+  width: $width;
+}
+$brown: #641e16;
+$lbrown: #943126;
+$vlbrown: #e74c3c;
+.navbar {
+  @include dimensions(100%, max-content);
+  position: absolute;
+  top: 0;
+  @include flexbox(row, 1rem, 1rem);
+  padding-right: 5rem;
+  padding-left: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 6;
+
+  .pagename {
+    background-color: transparent;
+    border: none;
+    color: $brown;
+    @include dimensions(25%, 100%);
+    z-index: 3;
+    transition: 0.3s;
+    &:hover {
+      color: $vlbrown;
+    }
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+  }
+  .smallbuttons {
+    @include flexbox(row, 1rem, 1rem);
+    z-index: 3;
+    .smallbutton {
+      height: 6rem;
+      width: 10rem;
+      font-size: 2rem;
+      border-radius: 3rem;
+      border: none;
+      background-color: transparent;
+      color: white;
+      transition: 0.2s;
+      &:hover {
+        color: $vlbrown;
+      }
+    }
+  }
+  .hamburg {
+    display: none;
+  }
+  .smallbuttonshidden {
+    display: none;
+  }
+}
+.smallbuttons2 {
+  display: none;
+}
+@media (max-width: 500px) {
+  .navbar {
+    .hamburg {
+      @include dimensions(3rem, 3rem);
+      z-index: 4;
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      background-color: transparent;
+      color: white;
+      border: none;
+      font-size: 4rem;
+      width: 5rem;
+      height: 5rem;
+      display: inline;
+    }
+    .smallbuttons {
+      display: none;
+    }
+    .smallbuttons2 {
+      @include flexbox(column, 0.5rem, 1rem);
+      top: 7rem;
+      position: absolute;
+      background-color: $brown;
+      justify-content: space-evenly;
+      align-items: center;
+      width: 100%;
+      right: 1rem;
+      z-index: 3;
+      border-bottom: 1px solid $lbrown;
+
+      box-shadow: -4px 4px 10px $brown;
+
+      transition: 0.3s;
+      .smallbutton {
+        height: 6rem;
+        width: 10rem;
+        font-size: 2rem;
+        border-radius: 3rem;
+        border: none;
+        background-color: transparent;
+        color: white;
+        transition: 0.5s;
+        &:hover {
+          color: $vlbrown;
+        }
+      }
+    }
+    .smallbuttonshidden {
+      top: 5rem;
+      position: absolute;
+      background-color: $brown;
+      justify-content: start;
+      align-items: center;
+      width: 5rem;
+      right: 1rem;
+      height: 0;
+      transition: 0.5s;
+      @include flexbox(column, 1rem, 1rem);
+      .smallbutton {
+        height: 0;
+        font-size: 0;
+        border: none;
+        transition: 0.5s;
+        border-radius: 3rem;
+        border: none;
+        background-color: transparent;
+        color: $brown;
+      }
+      z-index: 3;
+    }
+  }
+}
